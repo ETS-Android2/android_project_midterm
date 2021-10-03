@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5560F0</color>
+    <color name="colorPrimaryDark">#5560F0</color>
+    <color name="colorDarkBlue">#1925BA</color>
+    <color name="colorLightBlue">#A1A7F6</color>
+    <color name="colorAccent">#E8E8E8</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorGray">#868ea5</color>
+    <color name="colorDarkGray">#445278</color>
+    <color name="colorRed">#e2163b</color>
+    <color name="colorLightRed">#F38195</color>
+    <color name="colorGreen">#30a04a</color>
+    <color name="purple_200">#FFBB86FC</color>
+
+    <color name="purple_500">#FF6200EE</color>
+
+    <color name="purple_700">#FF3700B3</color>
+
+    <color name="teal_200">#FF03DAC5</color>
+
+    <color name="teal_700">#FF018786</color>
+
+    <color name="black">#FF000000</color>
+
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary color of the app (shown in the app bar) -->
+    <color name="primary_color">#4A312A</color>
+
+    <!-- Primary dark color of the app (shown in the status bar) -->
+    <color name="primary_dark_color">#2F1D1A</color>
+
+    <!-- Background color for app -->
+    <color name="tan_background">#FFF7DA</color>
+
+    <!-- Background color for the numbers category -->
+    <color name="category_numbers">#FD8E09</color>
+
+    <!-- Background color for the family members category -->
+    <color name="category_family">#379237</color>
+
+    <!-- Background color for the colors category -->
+    <color name="category_colors">#8800A0</color>
+
+    <!-- Background color for the phrases category -->
+    <color name="category_phrases">#16AFCA</color>
+
+    <color name="tabText">#C0392B</color>
+
+    <color name="blue">#4C8AF1</color>
+
+    <color name="green">#0DDF79</color>
+
+    <color name="red">#F4805B</color>
+
+    <color name="dark_blue">#4C8AF1</color>
+
+    <color name="cases">#FFA726</color>
+    <color name="recovered">#66BB6A</color>
+    <color name="deaths">#EF5350</color>
+    <color name="active">#29B6F6</color>
+</resources>
