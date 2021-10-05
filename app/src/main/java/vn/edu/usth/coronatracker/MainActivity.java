@@ -23,7 +23,10 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         addSymptoms();
         initView();
         fetchData();
+        setDateTextView();
         setupPieChart();
 //        loadPieChartData();
 
@@ -78,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static String withLargeIntegers(double value) {
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(value);
+    }
+
     private void fetchData() {
         Call<CoronaModel> call = RetrofitClient.getInstance().getMyApi().getWorldCorona();
         call.enqueue(new Callback<CoronaModel>() {
@@ -88,13 +97,13 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     if (response.body() != null) {
                         result = response.body();
-                        cases.setText(result.getCases() + " cases");
-                        active.setText(result.getActive() + " cases");
-                        deaths.setText(result.getDeaths() + " cases");
-                        recovered.setText(result.getRecovered() + " cases");
-                        todayCases.setText("+ " + result.getTodayCases() + " cases");
-                        todayRecovered.setText("+ " + result.getTodayRecovered() + " cases");
-                        todayDeaths.setText("+ " + result.getTodayDeaths() + " cases");
+                        cases.setText(withLargeIntegers(Double.parseDouble(result.getCases())));
+                        active.setText(withLargeIntegers(Double.parseDouble(result.getActive())));
+                        deaths.setText(withLargeIntegers(Double.parseDouble(result.getDeaths())));
+                        recovered.setText(withLargeIntegers(Double.parseDouble(result.getRecovered())));
+                        todayCases.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayCases())) + " cases");
+                        todayRecovered.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayRecovered())) + " cases");
+                        todayDeaths.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayDeaths())) + " cases");
                         loadPieChartData(result);
                         Log.i(TAG, result.toString());
 
@@ -111,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    private void setDateTextView() {
+        TextView textView = findViewById(R.id.date);
+        SimpleDateFormat sdf = new SimpleDateFormat("'As of' HH'h'mm, dd/MM/yyyy");
+        String currentDateandTime = sdf.format(new Date());
+        textView.setText(currentDateandTime);
     }
 
     private void setupPieChart() {
@@ -151,9 +167,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadPieChartData(CoronaModel result) {
         ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(Float.parseFloat(result.getDeaths()), "Deaths"));
-        entries.add(new PieEntry(Float.parseFloat(result.getCases()), "Cases"));
         entries.add(new PieEntry(Float.parseFloat(result.getRecovered()), "Recovered"));
+        entries.add(new PieEntry(Float.parseFloat(result.getCases()), "Cases"));
+        entries.add(new PieEntry(Float.parseFloat(result.getDeaths()), "Deaths"));
         entries.add(new PieEntry(Float.parseFloat(result.getActive()), "Active"));
 
         ArrayList<Integer> colors = new ArrayList<>();

@@ -16,6 +16,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import vn.edu.usth.coronatracker.model.Country;
 
@@ -55,15 +56,20 @@ public class CountryDetailActivity extends AppCompatActivity {
         }
 
 
-        cases.setText(resultCountry.getCases() + " cases");
-        active.setText(resultCountry.getActive() + " cases");
-        deaths.setText(resultCountry.getDeaths() + " cases");
-        recovered.setText(resultCountry.getRecovered() + " cases");
-        todayCases.setText("+ " + resultCountry.getTodayCases() + " cases");
-        todayRecovered.setText("+ " + resultCountry.getTodayRecovered() + " cases");
-        todayDeaths.setText("+ " + resultCountry.getTodayDeaths() + " cases");
+        cases.setText(withLargeIntegers(Double.parseDouble(resultCountry.getCases())));
+        active.setText(withLargeIntegers(Double.parseDouble(resultCountry.getActive())));
+        deaths.setText(withLargeIntegers(Double.parseDouble(resultCountry.getDeaths())));
+        recovered.setText(withLargeIntegers(Double.parseDouble(resultCountry.getRecovered())));
+        todayCases.setText("+ " + withLargeIntegers(Double.parseDouble(resultCountry.getTodayCases())) + " cases");
+        todayRecovered.setText("+ " + withLargeIntegers(Double.parseDouble(resultCountry.getTodayRecovered())) + " cases");
+        todayDeaths.setText("+ " + withLargeIntegers(Double.parseDouble(resultCountry.getTodayDeaths())) + " cases");
         countryName.setText(resultCountry.getCountry());
         loadPieChartData(resultCountry);
+    }
+
+    public static String withLargeIntegers(double value) {
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(value);
     }
 
     private void initView() {
@@ -154,15 +160,15 @@ public class CountryDetailActivity extends AppCompatActivity {
 
     }
 
-    private void fetchData(Country country){
-        String country_name = country.getCountry();
-        String url = "https://disease.sh/v3/covid-19/vaccine/coverage/countries/{country_name}";
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-            }
-        });
-    }
+//    private void fetchData(Country country){
+//        String country_name = country.getCountry();
+//        String url = "https://disease.sh/v3/covid-19/vaccine/coverage/countries/{country_name}";
+//        JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//
+//            }
+//        });
+//    }
 
 }
