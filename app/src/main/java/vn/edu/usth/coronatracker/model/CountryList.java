@@ -1,37 +1,21 @@
 package vn.edu.usth.coronatracker.model;
 
-import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class CountryList {
 
-//    @SerializedName("countryLists")
-//    private Country[] countryLists;
-//
-//    public CountryList(Country[] countryLists) {
-//        this.countryLists = countryLists;
-//    }
-//
-//    public Country[] getCountryLists() {
-//        return countryLists;
-//    }
-//
-//    public void setCountryLists(Country[] countryLists) {
-//        this.countryLists = countryLists;
-//    }
-    @SerializedName("countryLists")
-    private List<Country> countryLists;
+    private List<CountryModel> countryLists;
 
-    public CountryList(List<Country> countryLists) {
+    public CountryList(List<CountryModel> countryLists) {
         this.countryLists = countryLists;
     }
 
-    public List<Country> getCountryLists() {
+    public List<CountryModel> getCountryLists() {
         return countryLists;
     }
 
-    public void setCountryLists(List<Country> countryLists) {
+    public void setCountryLists(List<CountryModel> countryLists) {
         this.countryLists = countryLists;
     }
 }

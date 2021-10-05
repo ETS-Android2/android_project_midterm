@@ -11,20 +11,19 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.coronatracker.adapter.CountryAdapter;
-import vn.edu.usth.coronatracker.model.Country;
-import vn.edu.usth.coronatracker.model.CountryList;
+import vn.edu.usth.coronatracker.model.CountryModel;
+import vn.edu.usth.coronatracker.services.CoronaApi;
 import vn.edu.usth.coronatracker.services.RetrofitClient;
 
 public class CountryActivity extends AppCompatActivity {
     private static final String TAG = "COUNTRY ACTIVITY";
-    private List<Country> countryLists;
+    private List<CountryModel> countryLists;
     private CountryAdapter countryAdapter;
     private RecyclerView countryRecyclerView;
     private ProgressBar progressBar;
@@ -62,17 +61,19 @@ public class CountryActivity extends AppCompatActivity {
     }
 
     private void fetchData() {
-        Call<List<Country>>call = RetrofitClient.getInstance().getMyApi().getCountryLists();
-        call.enqueue(new Callback<List<Country>>() {
+        CoronaApi api = RetrofitClient.getClient().create(CoronaApi.class);
+        Call<List<CountryModel>>call = api.getCountryLists();
+        call.enqueue(new Callback<List<CountryModel>>() {
             @Override
-            public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
+            public void onResponse(Call<List<CountryModel>> call, Response<List<CountryModel>> response) {
                 if(response.body()!=null){
                     progressBar.setVisibility(View.VISIBLE);
                     countryLists=new ArrayList<>(response.body());
 
-                    countryAdapter = new CountryAdapter(CountryActivity.this, countryLists);
+                    countryAdapter = new CountryAdapter(CountryActivity.this, response.body());
                     countryRecyclerView.setAdapter(countryAdapter);
                     countryAdapter.setCountryLists(countryLists);
+                    countryAdapter.notifyDataSetChanged();
                     progressBar.setVisibility(View.GONE);
                     Log.i(TAG, "Successful");
                 }
@@ -80,12 +81,13 @@ public class CountryActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Country>> call, Throwable t) {
+            public void onFailure(Call<List<CountryModel>> call, Throwable t) {
 
             }
         });
 
     }
+
 
     private void initView() {
         searchView = findViewById(R.id.search_view);

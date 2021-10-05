@@ -4,9 +4,8 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 import vn.edu.usth.coronatracker.model.CoronaModel;
-import vn.edu.usth.coronatracker.model.Country;
+import vn.edu.usth.coronatracker.model.CountryModel;
 
 public interface CoronaApi {
 
@@ -16,7 +15,7 @@ public interface CoronaApi {
     Call<CoronaModel> getWorldCorona();
 
     @GET("countries")
-    Call<List<Country>>getCountryLists();
+    Call<List<CountryModel>>getCountryLists();
 
 
 }

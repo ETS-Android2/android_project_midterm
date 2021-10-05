@@ -43,21 +43,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/symptom_text"
+                android:id="@+id/slider_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="dry cough"
                 android:textColor="@color/colorPrimary"
-                android:textSize="15sp" />
-            <TextView
-                android:id="@+id/symptom_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                android:textColor="@color/colorBlack"
-                android:textSize="12sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 

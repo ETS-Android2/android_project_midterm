@@ -35,8 +35,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder> {
 
         SymptomModel symptomModel = symptomLists.get(position);
         viewHolder.imageView.setImageResource(symptomModel.getImage());
-        viewHolder.symptomText.setText(symptomModel .getSymptomText());
-        viewHolder.symptomDetail.setText(symptomModel .getSymptomDetail());
+        viewHolder.sliderText.setText(symptomModel .getSymptomText());
     }
 
     @Override
@@ -48,13 +47,12 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder> {
 
     public class Holder extends SliderViewAdapter.ViewHolder{
         private ImageView imageView;
-        private TextView symptomText, symptomDetail;
+        private TextView sliderText;
         public Holder(View itemView) {
             super(itemView);
 
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
-            symptomText = (TextView) itemView.findViewById(R.id.symptom_text);
-            symptomDetail= (TextView) itemView.findViewById(R.id.symptom_detail);
+            sliderText = (TextView) itemView.findViewById(R.id.slider_text);
         }
     }
 }

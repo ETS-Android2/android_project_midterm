@@ -176,7 +176,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/active_new_textview"
+                        android:id="@+id/active_new"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="25dp"
@@ -323,9 +323,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="View Country"
-                    android:textAlignment="center"
                     android:textColor="@color/colorDarkBlue"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal" />
 
             </RelativeLayout>
 
@@ -347,6 +347,16 @@
                 android:textColor="#000000"
                 android:textSize="25dp" />
 
+            <ImageView
+                android:id="@+id/map"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:text="Switch(Dark Mode)"
+                android:src="@drawable/ic_map"
+                android:layout_alignParentRight="true" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -355,7 +365,7 @@
             android:layout_marginTop="25dp">
 
             <com.smarteist.autoimageslider.SliderView
-                android:id="@+id/image_slider"
+                android:id="@+id/symptoms_slider"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 app:sliderAnimationDuration="600"
@@ -374,6 +384,59 @@
 
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/precautions_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Precautions"
+                android:textColor="#000000"
+                android:textSize="25dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/precautions_slider"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="#5A5A5A"
+                app:sliderIndicatorUnselectedColor="#FFF"
+                app:sliderScrollTimeInSec="2"
+                app:sliderStartAutoCycle="true" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/updateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Created by Group 15"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/colorBlack" />
 
 
     </LinearLayout>

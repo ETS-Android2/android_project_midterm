@@ -21,15 +21,15 @@ import java.util.Locale;
 
 import vn.edu.usth.coronatracker.CountryDetailActivity;
 import vn.edu.usth.coronatracker.R;
-import vn.edu.usth.coronatracker.model.Country;
+import vn.edu.usth.coronatracker.model.CountryModel;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
     private static final String TAG = "COUNTRY ADAPTER";
-    private List<Country> countryLists;
-    private List<Country> countryCopy;
+    private List<CountryModel> countryLists;
+    private List<CountryModel> countryCopy;
     private Context mContext;
 
-    public CountryAdapter(Context mContext, List<Country> countryLists) {
+    public CountryAdapter(Context mContext, List<CountryModel> countryLists) {
         this.countryLists = countryLists;
         this.mContext = mContext;
         this.countryCopy = new ArrayList<>();
@@ -47,13 +47,13 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
 
     @Override
     public void onBindViewHolder(@NonNull CountryAdapter.CountryViewHolder holder, int position) {
-        Country country = countryLists.get(position);
+        CountryModel country = countryLists.get(position);
         holder.cases.setText(country.getCases());
         holder.recovered.setText(country.getRecovered());
         holder.deaths.setText(country.getDeaths());
         holder.country_name.setText(country.getCountry());
-        Log.i(TAG, country.getFlag());
-        Picasso.get().load(country.getFlag()).resize(120, 60).into(holder.country_flag);
+//        Log.i(TAG, country.getFlag());
+        Picasso.get().load(country.getCountryInfo().getFlag()).into(holder.country_flag);
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +86,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
         }
     }
 
-    public void setCountryLists(List<Country> countryLists) {
+    public void setCountryLists(List<CountryModel> countryLists) {
         this.countryLists = countryLists;
         notifyDataSetChanged();
     }
@@ -97,7 +97,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
         if (charText.length() == 0) {
             countryLists.addAll(countryCopy);
         } else {
-            for (Country country : countryCopy) {
+            for (CountryModel country : countryCopy) {
                 if (country.getCountry().toLowerCase(Locale.getDefault()).startsWith(charText)) {
                     Log.i(TAG, country.getCountry().toLowerCase());
                     countryLists.add(country);

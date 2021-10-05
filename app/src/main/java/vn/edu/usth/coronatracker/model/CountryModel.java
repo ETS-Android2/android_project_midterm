@@ -5,50 +5,42 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Country implements Serializable {
+public class CountryModel implements Serializable {
     @SerializedName("updated")
-    @Expose
+//    @Expose
     private long updated;
     @SerializedName("cases")
-    @Expose
+//    @Expose
     private String cases;
     @SerializedName("todayCases")
-    @Expose
+//    @Expose
     private String todayCases;
     @SerializedName("deaths")
-    @Expose
+//    @Expose
     private String deaths;
     @SerializedName("todayDeaths")
-    @Expose
+//    @Expose
     private String todayDeaths;
     @SerializedName("recovered")
-    @Expose
+//    @Expose
     private String recovered;
     @SerializedName("todayRecovered")
-    @Expose
+//    @Expose
     private String todayRecovered;
     @SerializedName("active")
-    @Expose
+//    @Expose
     private String active;
     @SerializedName("critical")
-    @Expose
+//    @Expose
     private String critical;
     @SerializedName("country")
-    @Expose
+//    @Expose
     private String country;
-    @SerializedName("flag")
-    @Expose
-    private String flag;
 
-    @SerializedName("lat")
-    @Expose
-    private double latitude;
+    @SerializedName("countryInfo")
+    private CountryInfo countryInfo;
 
-    @SerializedName("long")
-    @Expose
-    private double longitude;
-
-    public Country(long updated, String cases, String todayCases, String deaths, String todayDeaths, String recovered, String todayRecovered, String active, String critical, String country, String flag, double latitude, double longitude) {
+    public CountryModel(long updated, String cases, String todayCases, String deaths, String todayDeaths, String recovered, String todayRecovered, String active, String critical, String country, CountryInfo countryInfo) {
         this.updated = updated;
         this.cases = cases;
         this.todayCases = todayCases;
@@ -59,13 +51,12 @@ public class Country implements Serializable {
         this.active = active;
         this.critical = critical;
         this.country = country;
-        this.flag = flag;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.countryInfo = countryInfo;
     }
 
-    public Country() {
+    public CountryModel() {
     }
+
 
     public long getUpdated() {
         return updated;
@@ -147,33 +138,18 @@ public class Country implements Serializable {
         this.country = country;
     }
 
-    public String getFlag() {
-        return flag;
+    public CountryInfo getCountryInfo() {
+        return countryInfo;
     }
 
-    public void setFlag(String flag) {
-        this.flag = flag;
+    public void setCountryInfo(CountryInfo countryInfo) {
+        this.countryInfo = countryInfo;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
 
     @Override
     public String toString() {
-        return "Country{" +
+        return "CountryModel{" +
                 "updated=" + updated +
                 ", cases='" + cases + '\'' +
                 ", todayCases='" + todayCases + '\'' +
@@ -184,9 +160,7 @@ public class Country implements Serializable {
                 ", active='" + active + '\'' +
                 ", critical='" + critical + '\'' +
                 ", country='" + country + '\'' +
-                ", flag='" + flag + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
+                ", countryInfo=" + countryInfo.toString() +
                 '}';
     }
 }

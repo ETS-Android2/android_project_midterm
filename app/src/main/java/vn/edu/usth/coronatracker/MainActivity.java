@@ -8,9 +8,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
@@ -23,10 +23,7 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,6 +32,7 @@ import retrofit2.Response;
 import vn.edu.usth.coronatracker.adapter.SliderAdapter;
 import vn.edu.usth.coronatracker.model.CoronaModel;
 import vn.edu.usth.coronatracker.model.SymptomModel;
+import vn.edu.usth.coronatracker.services.CoronaApi;
 import vn.edu.usth.coronatracker.services.RetrofitClient;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,16 +40,20 @@ public class MainActivity extends AppCompatActivity {
     CoronaModel result;
 
     private TextView cases, todayCases;
-    private TextView active;
+    private TextView active, todayActive;
     private TextView recovered, todayRecovered;
     private TextView deaths, todayDeaths;
+    private ImageView imageMap;
     private CardView country;
     private PieChart pieChart;
-    private SliderAdapter sliderAdapter;
-    private SliderView sliderView;
-    int[] images = {R.drawable.cough, R.drawable.pain, R.drawable.fever};
+    private SliderAdapter symptomAdapter , precautionAdapter;
+    private SliderView symptomsView, precautionsView;
+    int[]symptomImages = {R.drawable.cough, R.drawable.pain, R.drawable.fever};
+    int[]precautionImages = {R.drawable.home, R.drawable.clean, R.drawable.restaurant};
+    private int active_case;
 
     private List<SymptomModel> symptomLists = new ArrayList<>();
+    private List<SymptomModel> precautionLists = new ArrayList<>();
 
 
     @Override
@@ -61,9 +63,22 @@ public class MainActivity extends AppCompatActivity {
         addSymptoms();
         initView();
         fetchData();
-        setDateTextView();
         setupPieChart();
 //        loadPieChartData();
+
+        symptomAdapter = new SliderAdapter(getApplicationContext(), symptomLists);
+
+        symptomsView.setSliderAdapter(symptomAdapter);
+        symptomsView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        symptomsView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+        symptomsView.startAutoCycle();
+
+
+        precautionAdapter = new SliderAdapter(getApplicationContext(), precautionLists);
+        precautionsView.setSliderAdapter(precautionAdapter );
+        precautionsView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        precautionsView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+        precautionsView.startAutoCycle();
 
         country.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,22 +88,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        SliderAdapter sliderAdapter = new SliderAdapter(getApplicationContext(), symptomLists);
+        imageMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        sliderView.setSliderAdapter(sliderAdapter);
-        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        sliderView.startAutoCycle();
 
-    }
 
-    public static String withLargeIntegers(double value) {
-        DecimalFormat df = new DecimalFormat("###,###,###");
-        return df.format(value);
+
     }
 
     private void fetchData() {
-        Call<CoronaModel> call = RetrofitClient.getInstance().getMyApi().getWorldCorona();
+        CoronaApi api = RetrofitClient.getClient().create(CoronaApi.class);
+//        Call<CoronaModel> call = RetrofitClient.getInstance().getMyApi().getWorldCorona();
+        Call<CoronaModel> call = api.getWorldCorona();
         call.enqueue(new Callback<CoronaModel>() {
             @Override
             public void onResponse(Call<CoronaModel> call, Response<CoronaModel> response) {
@@ -97,13 +113,20 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     if (response.body() != null) {
                         result = response.body();
-                        cases.setText(withLargeIntegers(Double.parseDouble(result.getCases())));
-                        active.setText(withLargeIntegers(Double.parseDouble(result.getActive())));
-                        deaths.setText(withLargeIntegers(Double.parseDouble(result.getDeaths())));
-                        recovered.setText(withLargeIntegers(Double.parseDouble(result.getRecovered())));
-                        todayCases.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayCases())) + " cases");
-                        todayRecovered.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayRecovered())) + " cases");
-                        todayDeaths.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayDeaths())) + " cases");
+                        cases.setText(result.getCases());
+                        active.setText(result.getActive());
+                        deaths.setText(result.getDeaths());
+                        recovered.setText(result.getRecovered());
+                        todayCases.setText("+ " + result.getTodayCases());
+                        todayRecovered.setText("+ " + result.getTodayRecovered());
+                        todayDeaths.setText("+ " + result.getTodayDeaths());
+                        active_case = (Integer.parseInt(result.getTodayCases()) - Integer.parseInt(result.getTodayRecovered()) - Integer.parseInt(result.getTodayDeaths()));
+                        if (active_case < 0) {
+                            todayActive.setText("- " + String.valueOf(active_case * -1));
+                        } else {
+                            todayActive.setText("+ " + String.valueOf(active_case));
+                        }
+
                         loadPieChartData(result);
                         Log.i(TAG, result.toString());
 
@@ -120,13 +143,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-    }
 
-    private void setDateTextView() {
-        TextView textView = findViewById(R.id.date);
-        SimpleDateFormat sdf = new SimpleDateFormat("'As of' HH'h'mm, dd/MM/yyyy");
-        String currentDateandTime = sdf.format(new Date());
-        textView.setText(currentDateandTime);
+
     }
 
     private void setupPieChart() {
@@ -147,12 +165,6 @@ public class MainActivity extends AppCompatActivity {
         pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.getDescription().setEnabled(false);
 
-//        Legend l = pieChart.getLegend();
-//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-//        l.setOrientation(Legend.LegendOrientation.VERTICAL);
-
-
         Legend l = pieChart.getLegend();
         l.setForm(Legend.LegendForm.CIRCLE);
         l.setTextSize(12);
@@ -167,9 +179,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadPieChartData(CoronaModel result) {
         ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(Float.parseFloat(result.getRecovered()), "Recovered"));
-        entries.add(new PieEntry(Float.parseFloat(result.getCases()), "Cases"));
         entries.add(new PieEntry(Float.parseFloat(result.getDeaths()), "Deaths"));
+        entries.add(new PieEntry(Float.parseFloat(result.getCases()), "Cases"));
+        entries.add(new PieEntry(Float.parseFloat(result.getRecovered()), "Recovered"));
         entries.add(new PieEntry(Float.parseFloat(result.getActive()), "Active"));
 
         ArrayList<Integer> colors = new ArrayList<>();
@@ -216,18 +228,25 @@ public class MainActivity extends AppCompatActivity {
         cases = findViewById(R.id.cases);
         todayCases = findViewById(R.id.casesToday);
         active = findViewById(R.id.active);
+        todayActive = findViewById(R.id.active_new);
         recovered = findViewById(R.id.recovered);
         todayRecovered = findViewById(R.id.recoveredToday);
         deaths = findViewById(R.id.deaths);
         todayDeaths = findViewById(R.id.deathsToday);
         country = findViewById(R.id.country_card);
         pieChart = findViewById(R.id.piechart);
-        sliderView = findViewById(R.id.image_slider);
+        symptomsView = findViewById(R.id.symptoms_slider);
+        precautionsView = findViewById(R.id.precautions_slider);
+        imageMap = findViewById(R.id.map);
     }
 
     private void addSymptoms() {
-        symptomLists.add(new SymptomModel("Dry cough", "Lorem Ipsum is simply dummy text of the printing and typesetting industry", images[0]));
-        symptomLists.add(new SymptomModel("Pain", "Lorem Ipsum is simply dummy text of the printing and typesetting industry", images[1]));
-        symptomLists.add(new SymptomModel("Fever", "Lorem Ipsum is simply dummy text of the printing and typesetting industry", images[2]));
+        symptomLists.add(new SymptomModel("Dry cough", symptomImages[0]));
+        symptomLists.add(new SymptomModel("Pain", symptomImages[1]));
+        symptomLists.add(new SymptomModel("Fever", symptomImages[2]));
+
+        precautionLists.add(new SymptomModel("Stay at home", precautionImages[0]));
+        precautionLists.add(new SymptomModel("Wash your hands frequently",  precautionImages[1]));
+        precautionLists.add(new SymptomModel("Eat healthily",  precautionImages[2]));
     }
 }
