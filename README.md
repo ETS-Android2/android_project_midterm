@@ -25,7 +25,7 @@ This project is a Covid-19 tracker app made in Java. The main function is to kee
 * [Volley](https://github.com/google/volley): Another way for fetch Api
 * [Pie Charts](https://github.com/PhilJay/MPAndroidChart): A powerful 🚀 Android chart view / graph view library.
 * [Google Maps Clustering for Android](https://github.com/sharewire/google-maps-clustering): display clustering on maps
-* [GLide](https://github.com/bumptech/glide): For images loading
+* [Glide](https://github.com/bumptech/glide): For images loading
 
 ## UI
 ![DashBoard](https://github.com/ssjinkaido/android_project_midterm/blob/master/screenshots/DashBoard.PNG)
