@@ -22,7 +22,7 @@ This project is a Covid-19 tracker app made in Java. The main function is to kee
 
 ## Libraries
 * [Retrofit](https://github.com/square/retrofit): For fetching Api.
-* [Volley](https://github.com/google/volley): Another way for fetch Api
+* [Volley](https://github.com/google/volley): Another way for fetching Api
 * [Pie Charts](https://github.com/PhilJay/MPAndroidChart): A powerful 🚀 Android chart view / graph view library.
 * [Google Maps Clustering for Android](https://github.com/sharewire/google-maps-clustering): display clustering on maps
 * [Glide](https://github.com/bumptech/glide): For images loading
