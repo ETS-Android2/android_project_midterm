@@ -27,7 +27,7 @@
                 android:textSize="13sp"
                 android:gravity="left"
                 android:padding="5dp"
-                android:text="United States"
+                android:text="@string/united_states"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/black"
                 android:fontFamily="@font/lora" />

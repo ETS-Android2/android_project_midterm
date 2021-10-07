@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search Country"
+            android:text="@string/search_country"
             android:layout_margin="10dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
@@ -50,7 +50,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Country"
+                android:text="@string/country"
                 android:textColor="@color/black"
                 android:padding="10sp"
                 android:textSize="12sp"
@@ -60,7 +60,7 @@
             <TextView
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="Cases"
+                android:text="@string/cases"
                 android:textColor="@color/black"
                 android:padding="10sp"
                 android:textSize="12sp"
@@ -70,7 +70,7 @@
             <TextView
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="Recovered"
+                android:text="@string/recovered"
                 android:textColor="@color/black"
                 android:padding="10sp"
                 android:textSize="12sp"
@@ -80,7 +80,7 @@
             <TextView
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:text="Death"
+                android:text="@string/deaths"
                 android:textColor="@color/black"
                 android:padding="10sp"
                 android:textSize="12sp"

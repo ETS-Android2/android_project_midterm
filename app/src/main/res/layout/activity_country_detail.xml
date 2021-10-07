@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:gravity="center"
-                        android:text="Cases"
+                        android:text="@string/cases"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:fontFamily="@font/lora" />
@@ -179,7 +179,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:gravity="center"
-                        android:text="Active"
+                        android:text="@string/active"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:fontFamily="@font/lora" />
@@ -236,7 +236,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:gravity="center"
-                        android:text="Recovered"
+                        android:text="@string/recovered"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:fontFamily="@font/lora" />
@@ -292,7 +292,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:gravity="center"
-                        android:text="Deaths"
+                        android:text="@string/deaths"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:fontFamily="@font/lora" />
