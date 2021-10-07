@@ -18,7 +18,7 @@ This project is a Covid-19 tracker app made in Java. The main function is to kee
 * Covid-19 information: what is covid? symptoms, precautions.
 
 ## UI
-We will update screenshot of the app after we finished our UI. We are still trying to make it better.
+We will update the screenshots of the app after we finish our UI. We are still trying to make it better.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
