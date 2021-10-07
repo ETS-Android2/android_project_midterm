@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,7 +61,7 @@ public class CountryDetailActivity extends AppCompatActivity {
     private TextView recovered, todayRecovered;
     private TextView deaths, todayDeaths;
     private TextView countryName;
-    private CardView country;
+    private RelativeLayout country;
     private PieChart pieChart;
     private List<String> sortedDays = new ArrayList<>();
     private List<Date> days = new ArrayList<>();
@@ -86,22 +88,27 @@ public class CountryDetailActivity extends AppCompatActivity {
         }
 
 
-        cases.setText(resultCountry.getCases());
-        active.setText(resultCountry.getActive());
-        deaths.setText(resultCountry.getDeaths());
-        recovered.setText(resultCountry.getRecovered());
-        todayCases.setText("+ " + resultCountry.getTodayCases());
-        todayRecovered.setText("+ " + resultCountry.getTodayRecovered());
-        todayDeaths.setText("+ " + resultCountry.getTodayDeaths());
+        cases.setText(withLargeIntegers(Double.parseDouble(resultCountry.getCases())));
+        active.setText(withLargeIntegers(Double.parseDouble(resultCountry.getActive())));
+        deaths.setText(withLargeIntegers(Double.parseDouble(resultCountry.getDeaths())));
+        recovered.setText(withLargeIntegers(Double.parseDouble(resultCountry.getRecovered())));
+        todayCases.setText("+ " + withLargeIntegers(Double.parseDouble(resultCountry.getTodayCases())) + " cases");
+        todayRecovered.setText("+ " + withLargeIntegers(Double.parseDouble(resultCountry.getTodayRecovered())) + " cases");
+        todayDeaths.setText("+ " + withLargeIntegers(Double.parseDouble(resultCountry.getTodayDeaths())) + " cases");
         countryName.setText(resultCountry.getCountry());
         active_case = (Integer.parseInt(resultCountry.getTodayCases()) - Integer.parseInt(resultCountry.getTodayRecovered()) - Integer.parseInt(resultCountry.getTodayDeaths()));
         if (active_case < 0) {
-            todayActive.setText("- " + String.valueOf(active_case * -1));
+            todayActive.setText("- " + withLargeIntegers(active_case * -1));
         } else {
-            todayActive.setText("+ " + String.valueOf(active_case));
+            todayActive.setText("+ " + withLargeIntegers(active_case));
         }
         loadPieChartData(resultCountry);
         fetchData(resultCountry);
+    }
+
+    public static String withLargeIntegers(double value) {
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(value);
     }
 
     private void initView() {
@@ -150,9 +157,9 @@ public class CountryDetailActivity extends AppCompatActivity {
 
     private void loadPieChartData(CountryModel result) {
         ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(Float.parseFloat(result.getDeaths()), "Deaths"));
-        entries.add(new PieEntry(Float.parseFloat(result.getCases()), "Cases"));
         entries.add(new PieEntry(Float.parseFloat(result.getRecovered()), "Recovered"));
+        entries.add(new PieEntry(Float.parseFloat(result.getCases()), "Cases"));
+        entries.add(new PieEntry(Float.parseFloat(result.getDeaths()), "Deaths"));
         entries.add(new PieEntry(Float.parseFloat(result.getActive()), "Active"));
 
         ArrayList<Integer> colors = new ArrayList<>();

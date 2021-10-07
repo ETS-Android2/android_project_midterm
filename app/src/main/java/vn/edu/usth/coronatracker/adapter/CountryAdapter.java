@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -45,12 +46,17 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
         return viewHolder;
     }
 
+    public static String withLargeIntegers(double value) {
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(value);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull CountryAdapter.CountryViewHolder holder, int position) {
         CountryModel country = countryLists.get(position);
-        holder.cases.setText(country.getCases());
-        holder.recovered.setText(country.getRecovered());
-        holder.deaths.setText(country.getDeaths());
+        holder.cases.setText(withLargeIntegers(Double.parseDouble(country.getCases())));
+        holder.recovered.setText(withLargeIntegers(Double.parseDouble(country.getRecovered())));
+        holder.deaths.setText(withLargeIntegers(Double.parseDouble(country.getDeaths())));
         holder.country_name.setText(country.getCountry());
 //        Log.i(TAG, country.getFlag());
         Picasso.get().load(country.getCountryInfo().getFlag()).into(holder.country_flag);

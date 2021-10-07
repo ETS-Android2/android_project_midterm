@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -23,7 +24,10 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView active, todayActive;
     private TextView recovered, todayRecovered;
     private TextView deaths, todayDeaths;
-    private ImageView imageMap;
-    private CardView country;
+//    private ImageView imageMap;
+    private RelativeLayout country;
     private PieChart pieChart;
     private SliderAdapter symptomAdapter , precautionAdapter;
     private SliderView symptomsView, precautionsView;
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         addSymptoms();
         initView();
         fetchData();
+//        setDateTextView();
         setupPieChart();
 //        loadPieChartData();
 
@@ -88,17 +93,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        imageMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
+//        imageMap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
 
+    }
+
+    public static String withLargeIntegers(double value) {
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(value);
     }
 
     private void fetchData() {
@@ -113,18 +123,18 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     if (response.body() != null) {
                         result = response.body();
-                        cases.setText(result.getCases());
-                        active.setText(result.getActive());
-                        deaths.setText(result.getDeaths());
-                        recovered.setText(result.getRecovered());
-                        todayCases.setText("+ " + result.getTodayCases());
-                        todayRecovered.setText("+ " + result.getTodayRecovered());
-                        todayDeaths.setText("+ " + result.getTodayDeaths());
+                        cases.setText(withLargeIntegers(Double.parseDouble(result.getCases())));
+                        active.setText(withLargeIntegers(Double.parseDouble(result.getActive())));
+                        deaths.setText(withLargeIntegers(Double.parseDouble(result.getDeaths())));
+                        recovered.setText(withLargeIntegers(Double.parseDouble(result.getRecovered())));
+                        todayCases.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayCases())) + " cases");
+                        todayRecovered.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayRecovered())) + " cases");
+                        todayDeaths.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayDeaths())) + " cases");
                         active_case = (Integer.parseInt(result.getTodayCases()) - Integer.parseInt(result.getTodayRecovered()) - Integer.parseInt(result.getTodayDeaths()));
                         if (active_case < 0) {
-                            todayActive.setText("- " + String.valueOf(active_case * -1));
+                            todayActive.setText("- " + withLargeIntegers(active_case * -1));
                         } else {
-                            todayActive.setText("+ " + String.valueOf(active_case));
+                            todayActive.setText("+ " + withLargeIntegers(active_case));
                         }
 
                         loadPieChartData(result);
@@ -146,6 +156,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+//    private void setDateTextView() {
+//        TextView textView = findViewById(R.id.date);
+//        SimpleDateFormat sdf = new SimpleDateFormat("'As of' HH'h'mm, dd/MM/yyyy");
+//        String currentDateandTime = sdf.format(new Date());
+//        textView.setText(currentDateandTime);
+//    }
 
     private void setupPieChart() {
         pieChart.setTransparentCircleRadius(45);
@@ -179,9 +196,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadPieChartData(CoronaModel result) {
         ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(Float.parseFloat(result.getDeaths()), "Deaths"));
-        entries.add(new PieEntry(Float.parseFloat(result.getCases()), "Cases"));
         entries.add(new PieEntry(Float.parseFloat(result.getRecovered()), "Recovered"));
+        entries.add(new PieEntry(Float.parseFloat(result.getCases()), "Cases"));
+        entries.add(new PieEntry(Float.parseFloat(result.getDeaths()), "Deaths"));
         entries.add(new PieEntry(Float.parseFloat(result.getActive()), "Active"));
 
         ArrayList<Integer> colors = new ArrayList<>();
@@ -237,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
         pieChart = findViewById(R.id.piechart);
         symptomsView = findViewById(R.id.symptoms_slider);
         precautionsView = findViewById(R.id.precautions_slider);
-        imageMap = findViewById(R.id.map);
+//        imageMap = findViewById(R.id.map);
     }
 
     private void addSymptoms() {

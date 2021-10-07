@@ -5,21 +5,97 @@
     android:layout_height="match_parent"
     tools:context=".CountryActivity">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shapebgsearch"
-        android:clickable="true"
-        android:focusable="true"
-        android:iconifiedByDefault="false"
-        android:queryHint="Type Here" />
+        android:background="#51B368"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search Country"
+            android:layout_margin="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/lora" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30px"
+            android:layout_marginEnd="30px"
+            android:layout_marginBottom="25px"
+            android:background="@drawable/shapebgsearch"
+            android:clickable="true"
+            android:focusable="true"
+            android:iconifiedByDefault="false"
+            android:queryHint="Type Here" />
+    </LinearLayout>
+
+
+    <TableLayout
+        android:id="@+id/country_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp">
+
+        <TableRow
+            android:background="#E4E6E5">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Country"
+                android:textColor="@color/black"
+                android:padding="10sp"
+                android:textSize="12sp"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="Cases"
+                android:textColor="@color/black"
+                android:padding="10sp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="Recovered"
+                android:textColor="@color/black"
+                android:padding="10sp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="Death"
+                android:textColor="@color/black"
+                android:padding="10sp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"/>
+
+        </TableRow>
+
+    </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/countryList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/search_view"
+        android:layout_below="@+id/country_bar"
         android:dividerHeight="0dp"
         android:drawSelectorOnTop="true"
         android:orientation="vertical" />

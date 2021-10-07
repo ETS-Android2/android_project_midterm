@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EFEFEF"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,28 +14,32 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#51B368">
 
             <TextView
                 android:id="@+id/covid_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="10dp"
                 android:text="Covid-19 in the World"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:fontFamily="@font/lora" />
 
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text=""
-                android:layout_centerHorizontal="true"
-                android:textColor="#808080"
-                android:textSize="13sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/date"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="50dp"-->
+<!--                android:text=""-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:textColor="#808080"-->
+<!--                android:textSize="13sp" />-->
 
         </RelativeLayout>
 
@@ -106,7 +110,8 @@
                         android:gravity="center"
                         android:text="Cases"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lora" />
 
                     <TextView
                         android:id="@+id/cases"
@@ -160,7 +165,8 @@
                         android:gravity="center"
                         android:text="Active"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lora" />
 
                     <TextView
                         android:id="@+id/active"
@@ -216,7 +222,8 @@
                         android:gravity="center"
                         android:text="Recovered"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lora" />
 
                     <TextView
                         android:id="@+id/recovered"
@@ -271,7 +278,8 @@
                         android:gravity="center"
                         android:text="Deaths"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:fontFamily="@font/lora" />
 
                     <TextView
                         android:id="@+id/deaths"
@@ -302,40 +310,40 @@
         </GridLayout>
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/country_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:id="@+id/country_card"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/colorAccent">-->
 
             <RelativeLayout
+                android:id="@+id/country_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="25dp">
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:elevation="4dp"
+                android:background="@drawable/button_bg">
 
                 <TextView
                     android:id="@+id/country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="View Country"
-                    android:textColor="@color/colorDarkBlue"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:gravity="center_horizontal" />
+                    android:fontFamily="@font/lora" />
 
             </RelativeLayout>
 
 
-        </androidx.cardview.widget.CardView>
+<!--        </androidx.cardview.widget.CardView>-->
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/symptoms_text"
@@ -345,17 +353,18 @@
                 android:layout_marginTop="20dp"
                 android:text="Symptoms"
                 android:textColor="#000000"
-                android:textSize="25dp" />
+                android:textSize="20dp"
+                android:fontFamily="@font/lora" />
 
-            <ImageView
-                android:id="@+id/map"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-                android:text="Switch(Dark Mode)"
-                android:src="@drawable/ic_map"
-                android:layout_alignParentRight="true" />
+<!--            <ImageView-->
+<!--                android:id="@+id/map"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:src="@drawable/ic_map"-->
+<!--                android:text="Switch(Dark Mode)" />-->
 
         </RelativeLayout>
 
@@ -380,7 +389,7 @@
                 app:sliderIndicatorSelectedColor="#5A5A5A"
                 app:sliderIndicatorUnselectedColor="#FFF"
                 app:sliderScrollTimeInSec="2"
-                app:sliderStartAutoCycle="true"/>
+                app:sliderStartAutoCycle="true" />
 
 
         </RelativeLayout>
@@ -398,7 +407,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Precautions"
                 android:textColor="#000000"
-                android:textSize="25dp" />
+                android:textSize="20dp"
+                android:fontFamily="@font/lora" />
 
         </RelativeLayout>
 
@@ -428,15 +438,7 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/updateText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:text="Created by Group 15"
-            android:layout_marginBottom="15dp"
-            android:textColor="@color/colorBlack" />
+
 
 
     </LinearLayout>
