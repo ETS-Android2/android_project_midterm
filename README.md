@@ -8,14 +8,24 @@ Trần Hồng Quân BI10-149\
 Lữ Khánh Huyền BI10-083\
 Vũ Đức Chính BI10-024
 
+## Data
+The data comes from Open Disease Data API (https://corona.lmao.ninja/)
+
 ## Features
 This project is a Covid-19 tracker app made in Java. The main function is to keep tracks of covid cases and vaccinated numbers
-* Global cases, active, deaths, recovered 
-* Search country based on their name
-* View specific country with its covid number
-* Pie chart to display covid cases and line chart to display vaccinated numbers
-* Map for someone who wants to visualize covid cases. We use google map API
-* Covid-19 information: what is covid? symptoms, precautions.
+- [x] Global cases, active, deaths, recovered 
+- [x] Search country based on their name
+- [x] View specific country with its covid number
+- [x] Pie chart to display covid cases and line chart to display vaccinated numbers
+- [x] Map for someone who wants to visualize covid cases. We use google map API
+- [x] Covid-19 information: what is covid? symptoms, precautions.
+
+## Libraries
+* [Retrofit](https://github.com/square/retrofit): For fetching Api.
+* [Volley](https://github.com/google/volley): Another way for fetch Api
+* [Pie Charts](https://github.com/PhilJay/MPAndroidChart): A powerful 🚀 Android chart view / graph view library.
+* [Google Maps Clustering for Android](https://github.com/sharewire/google-maps-clustering): display clustering on maps
+* [GLide](https://github.com/bumptech/glide): For images loading
 
 ## UI
 ![DashBoard](https://github.com/ssjinkaido/android_project_midterm/blob/master/screenshots/DashBoard.PNG)
