@@ -18,7 +18,11 @@ This project is a Covid-19 tracker app made in Java. The main function is to kee
 * Covid-19 information: what is covid? symptoms, precautions.
 
 ## UI
-We will update the screenshots of the app after we finish our UI. We are still trying to make it better.
+![DashBoard](https://github.com/ssjinkaido/android_project_midterm/blob/master/screenshots/DashBoard.PNG)
+![Global Cases](https://github.com/ssjinkaido/android_project_midterm/blob/master/screenshots/Global%20Cases.PNG)
+![Country List](https://github.com/ssjinkaido/android_project_midterm/blob/master/screenshots/CountryList.PNG)
+![Specific Country](https://github.com/ssjinkaido/android_project_midterm/blob/master/screenshots/SpecificCountry.PNG)
+![Country Map](https://github.com/ssjinkaido/android_project_midterm/blob/master/screenshots/CountryMap.PNG)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
