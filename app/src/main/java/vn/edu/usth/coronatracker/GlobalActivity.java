@@ -1,14 +1,12 @@
 package vn.edu.usth.coronatracker;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,27 +17,19 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
 
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import vn.edu.usth.coronatracker.adapter.SliderAdapter;
 import vn.edu.usth.coronatracker.model.CoronaModel;
-import vn.edu.usth.coronatracker.model.SymptomModel;
 import vn.edu.usth.coronatracker.services.CoronaApi;
 import vn.edu.usth.coronatracker.services.RetrofitClient;
 
-public class MainActivity extends AppCompatActivity {
+public class GlobalActivity extends AppCompatActivity {
     private static final String TAG = "CORONA MAIN ACTIVITY";
     CoronaModel result;
 
@@ -50,45 +40,24 @@ public class MainActivity extends AppCompatActivity {
 //    private ImageView imageMap;
     private RelativeLayout country;
     private PieChart pieChart;
-    private SliderAdapter symptomAdapter , precautionAdapter;
-    private SliderView symptomsView, precautionsView;
-    int[]symptomImages = {R.drawable.cough, R.drawable.pain, R.drawable.fever};
-    int[]precautionImages = {R.drawable.home, R.drawable.clean, R.drawable.restaurant};
     private int active_case;
-
-    private List<SymptomModel> symptomLists = new ArrayList<>();
-    private List<SymptomModel> precautionLists = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addSymptoms();
         initView();
         fetchData();
 //        setDateTextView();
         setupPieChart();
 //        loadPieChartData();
 
-        symptomAdapter = new SliderAdapter(getApplicationContext(), symptomLists);
-
-        symptomsView.setSliderAdapter(symptomAdapter);
-        symptomsView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        symptomsView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        symptomsView.startAutoCycle();
-
-
-        precautionAdapter = new SliderAdapter(getApplicationContext(), precautionLists);
-        precautionsView.setSliderAdapter(precautionAdapter );
-        precautionsView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        precautionsView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        precautionsView.startAutoCycle();
 
         country.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CountryActivity.class);
+                Intent intent = new Intent(GlobalActivity.this, CountryActivity.class);
                 startActivity(intent);
             }
         });
@@ -252,18 +221,6 @@ public class MainActivity extends AppCompatActivity {
         todayDeaths = findViewById(R.id.deathsToday);
         country = findViewById(R.id.country_card);
         pieChart = findViewById(R.id.piechart);
-        symptomsView = findViewById(R.id.symptoms_slider);
-        precautionsView = findViewById(R.id.precautions_slider);
-//        imageMap = findViewById(R.id.map);
     }
 
-    private void addSymptoms() {
-        symptomLists.add(new SymptomModel("Dry cough", symptomImages[0]));
-        symptomLists.add(new SymptomModel("Pain", symptomImages[1]));
-        symptomLists.add(new SymptomModel("Fever", symptomImages[2]));
-
-        precautionLists.add(new SymptomModel("Stay at home", precautionImages[0]));
-        precautionLists.add(new SymptomModel("Wash your hands frequently",  precautionImages[1]));
-        precautionLists.add(new SymptomModel("Eat healthily",  precautionImages[2]));
-    }
 }

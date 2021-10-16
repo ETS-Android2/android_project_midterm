@@ -180,7 +180,7 @@ public class CountryDetailActivity extends AppCompatActivity {
 
         colors.add(ColorTemplate.getHoloBlue());
 
-        PieDataSet dataset = new PieDataSet(entries, "");
+        PieDataSet dataset = new PieDataSet(entries, "Vaccinated numbers");
         dataset.setColors(colors);
         dataset.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         dataset.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);

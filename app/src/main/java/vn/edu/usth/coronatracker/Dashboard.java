@@ -20,7 +20,7 @@ public class Dashboard extends AppCompatActivity {
         covidTracker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Dashboard.this, MainActivity.class));
+                startActivity(new Intent(Dashboard.this, GlobalActivity.class));
             }
         });
 

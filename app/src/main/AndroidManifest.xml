@@ -29,7 +29,7 @@
         <activity android:name=".MapsActivity" />
         <activity android:name=".CountryDetailActivity" />
         <activity android:name=".CountryActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".GlobalActivity" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAORvDRZDcrBG374gSZx5qlXHyzlkQyUeo" />
