@@ -7,34 +7,24 @@ import java.io.Serializable;
 
 public class CountryModel implements Serializable {
     @SerializedName("updated")
-//    @Expose
     private long updated;
     @SerializedName("cases")
-//    @Expose
     private String cases;
     @SerializedName("todayCases")
-//    @Expose
     private String todayCases;
     @SerializedName("deaths")
-//    @Expose
     private String deaths;
     @SerializedName("todayDeaths")
-//    @Expose
     private String todayDeaths;
     @SerializedName("recovered")
-//    @Expose
     private String recovered;
     @SerializedName("todayRecovered")
-//    @Expose
     private String todayRecovered;
     @SerializedName("active")
-//    @Expose
     private String active;
     @SerializedName("critical")
-//    @Expose
     private String critical;
     @SerializedName("country")
-//    @Expose
     private String country;
 
     @SerializedName("countryInfo")

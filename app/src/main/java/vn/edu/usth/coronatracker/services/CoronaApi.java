@@ -8,9 +8,6 @@ import vn.edu.usth.coronatracker.model.CoronaModel;
 import vn.edu.usth.coronatracker.model.CountryModel;
 
 public interface CoronaApi {
-
-    String BASE_URL = "https://disease.sh/v3/covid-19/";
-
     @GET("all")
     Call<CoronaModel> getWorldCorona();
 

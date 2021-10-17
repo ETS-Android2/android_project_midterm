@@ -18,13 +18,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="Welcome"
+            android:text="@string/welcome"
             android:textColor="@color/white"
             android:textSize="50sp"
             android:textStyle="bold"
-            android:fontFamily="@font/lora" />
+            android:fontFamily="@font/lora"
+            android:layout_marginLeft="15dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
-                android:text="Corona Tracker"
+                android:text="@string/corona_tracker"
                 android:textSize="20sp"
                 android:fontFamily="@font/lora" />
 
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
-                android:text="Corona Map"
+                android:text="@string/corona_map"
                 android:textSize="20sp"
                 android:fontFamily="@font/lora" />
 
@@ -103,7 +103,7 @@
         android:layout_marginTop="700dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="Created by Group 15"
+        android:text="@string/created_by_group_15"
         android:textColor="#7E7E7E" />
 
 </RelativeLayout>

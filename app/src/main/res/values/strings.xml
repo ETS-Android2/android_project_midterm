@@ -8,4 +8,9 @@
     <string name="deaths">Deaths</string>
     <string name="active">Active</string>
     <string name="covid_19_in_the_world">Covid-19 in the World</string>
+    <string name="welcome">Welcome</string>
+    <string name="corona_tracker">Corona Tracker</string>
+    <string name="corona_map">Corona Map</string>
+    <string name="created_by_group_15">Created by Group 15</string>
+    <string name="vaccinated_numbers">Vaccinated Numbers</string>
 </resources>

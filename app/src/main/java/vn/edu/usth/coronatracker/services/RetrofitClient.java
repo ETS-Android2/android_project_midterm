@@ -1,17 +1,11 @@
 package vn.edu.usth.coronatracker.services;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.util.concurrent.TimeUnit;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-
-import static vn.edu.usth.coronatracker.services.CoronaApi.BASE_URL;
+import vn.edu.usth.coronatracker.constants.Constants;
 
 public class RetrofitClient {
 
@@ -46,7 +40,7 @@ public class RetrofitClient {
 
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(Constants.BaseURL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .client(httpClient.build())

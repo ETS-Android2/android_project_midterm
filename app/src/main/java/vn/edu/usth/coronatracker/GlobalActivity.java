@@ -37,7 +37,7 @@ public class GlobalActivity extends AppCompatActivity {
     private TextView active, todayActive;
     private TextView recovered, todayRecovered;
     private TextView deaths, todayDeaths;
-//    private ImageView imageMap;
+    //    private ImageView imageMap;
     private RelativeLayout country;
     private PieChart pieChart;
     private int active_case;
@@ -71,18 +71,15 @@ public class GlobalActivity extends AppCompatActivity {
 //        });
 
 
-
-
     }
 
-    public static String withLargeIntegers(double value) {
+    private static String withLargeIntegers(double value) {
         DecimalFormat df = new DecimalFormat("###,###,###");
         return df.format(value);
     }
 
     private void fetchData() {
         CoronaApi api = RetrofitClient.getClient().create(CoronaApi.class);
-//        Call<CoronaModel> call = RetrofitClient.getInstance().getMyApi().getWorldCorona();
         Call<CoronaModel> call = api.getWorldCorona();
         call.enqueue(new Callback<CoronaModel>() {
             @Override
@@ -101,9 +98,9 @@ public class GlobalActivity extends AppCompatActivity {
                         todayDeaths.setText("+ " + withLargeIntegers(Double.parseDouble(result.getTodayDeaths())) + " cases");
                         active_case = (Integer.parseInt(result.getTodayCases()) - Integer.parseInt(result.getTodayRecovered()) - Integer.parseInt(result.getTodayDeaths()));
                         if (active_case < 0) {
-                            todayActive.setText("- " + withLargeIntegers(active_case * -1));
+                            todayActive.setText("- " + withLargeIntegers(active_case * -1) + " cases");
                         } else {
-                            todayActive.setText("+ " + withLargeIntegers(active_case));
+                            todayActive.setText("+ " + withLargeIntegers(active_case) + " cases");
                         }
 
                         loadPieChartData(result);

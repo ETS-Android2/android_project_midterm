@@ -42,8 +42,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     public CountryAdapter.CountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View studentView = inflater.inflate(R.layout.country_item, parent, false);
-        CountryViewHolder viewHolder = new CountryViewHolder(studentView);
-        return viewHolder;
+        return new CountryViewHolder(studentView);
     }
 
     public static String withLargeIntegers(double value) {

@@ -41,6 +41,7 @@ public class CountryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 searchView.setIconified(false);
+                searchView.onActionViewExpanded();
             }
         });
 

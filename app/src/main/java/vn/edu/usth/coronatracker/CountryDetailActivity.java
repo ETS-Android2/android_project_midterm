@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -180,7 +181,7 @@ public class CountryDetailActivity extends AppCompatActivity {
 
         colors.add(ColorTemplate.getHoloBlue());
 
-        PieDataSet dataset = new PieDataSet(entries, "Vaccinated numbers");
+        PieDataSet dataset = new PieDataSet(entries, "");
         dataset.setColors(colors);
         dataset.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         dataset.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
@@ -231,6 +232,7 @@ public class CountryDetailActivity extends AppCompatActivity {
                                 }
                                 Log.i(TAG, date.toString());
                                 days.add(date);
+
                                 vaccineLists.add((Integer) map.get(key));
                             }
 
@@ -254,9 +256,15 @@ public class CountryDetailActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void renderData() {
         Collections.sort(vaccineLists);
+        // I dont know why, but the days are not sorted as in fetch api
+        Log.i(TAG, days.toString());
+
+        //sort the date in days list
+        //take from stack overflow, I have not found the optimal way yet
         List<Date> sorted = days.stream().sorted(Comparator.comparingLong(Date::getTime))
                 .collect(Collectors.toList());
 
+        //Take 6 days out of 30 days
         for (int i = 1; i <= 6; i++) {
             SimpleDateFormat sm = new SimpleDateFormat("MM-dd-yy");
             String strDate = sm.format(sorted.get(i * 5 - 1));
@@ -278,7 +286,7 @@ public class CountryDetailActivity extends AppCompatActivity {
         lineEntries.add(new Entry(5.0f, vaccineLists.get(25)));
 
 
-        lineDataSet = new LineDataSet(lineEntries, "Number of vaccines");
+        lineDataSet = new LineDataSet(lineEntries, "");
         lineDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         lineDataSet.setCircleRadius(7f);
 
@@ -288,8 +296,6 @@ public class CountryDetailActivity extends AppCompatActivity {
 
         lineChart.animateXY(900, 900);
         lineChart.getXAxis().setEnabled(true);
-
-        lineChart.getDescription().setEnabled(false);
         lineChart.getAxisRight().setEnabled(false);
         lineChart.setExtraBottomOffset(40f);
 

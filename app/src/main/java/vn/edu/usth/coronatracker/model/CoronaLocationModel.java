@@ -9,8 +9,8 @@ import net.sharewire.googlemapsclustering.ClusterItem;
 
 public class CoronaLocationModel implements ClusterItem {
 
-    private LatLng location;
-    private String title_count;
+    private final LatLng location;
+    private final String title_count;
 
     public CoronaLocationModel(@NonNull LatLng location, @NonNull String title_count) {
         this.location = location;

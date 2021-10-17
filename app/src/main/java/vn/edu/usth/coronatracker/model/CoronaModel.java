@@ -5,46 +5,32 @@ import com.google.gson.annotations.SerializedName;
 
 public class CoronaModel {
     @SerializedName("updated")
-    @Expose
     private long updated;
     @SerializedName("cases")
-    @Expose
     private String cases;
     @SerializedName("todayCases")
-    @Expose
     private String todayCases;
     @SerializedName("deaths")
-    @Expose
     private String deaths;
     @SerializedName("todayDeaths")
-    @Expose
     private String todayDeaths;
     @SerializedName("recovered")
-    @Expose
     private String recovered;
     @SerializedName("todayRecovered")
-    @Expose
     private String todayRecovered;
     @SerializedName("active")
-    @Expose
     private String active;
     @SerializedName("critical")
-    @Expose
     private String critical;
     @SerializedName("casesPerOneMillion")
-    @Expose
     private String casesPerOneMillion;
     @SerializedName("deathsPerOneMillion")
-    @Expose
     private String deathsPerOneMillion;
     @SerializedName("tests")
-    @Expose
     private String tests;
     @SerializedName("testsPerOneMillion")
-    @Expose
     private Double testsPerOneMillion;
     @SerializedName("affectedCountries")
-    @Expose
     private String affectedCountries;
 
     public long getUpdated() {
