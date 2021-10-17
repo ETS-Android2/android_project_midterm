@@ -304,6 +304,7 @@ public class CountryDetailActivity extends AppCompatActivity {
         lineChart.getLegend().setEnabled(false);
 //        lineChart.setViewPortOffsets(0,0,0,0);
         lineChart.setTouchEnabled(true);
+        lineChart.getDescription().setEnabled(false);
 
 //        lineChart.setScaleEnabled(true);
 //        lineChart.setHighlightPerTapEnabled(true);
