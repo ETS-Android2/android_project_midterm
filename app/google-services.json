@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "770926889456",
+    "firebase_url": "https://blogapp-f320d-default-rtdb.firebaseio.com",
+    "project_id": "blogapp-f320d",
+    "storage_bucket": "blogapp-f320d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770926889456:android:1c109816d5bcfe2d5a3535",
+        "android_client_info": {
+          "package_name": "vn.edu.usth.coronatracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770926889456-kasv9a43gl7jssee6ea1l8s8md6ane3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPyboBOP42HVbUp_ZCZwDrPFbWUHj7lkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770926889456-kasv9a43gl7jssee6ea1l8s8md6ane3v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

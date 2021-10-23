@@ -1,12 +1,19 @@
 package vn.edu.usth.coronatracker;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,8 +36,8 @@ import vn.edu.usth.coronatracker.model.CoronaModel;
 import vn.edu.usth.coronatracker.services.CoronaApi;
 import vn.edu.usth.coronatracker.services.RetrofitClient;
 
-public class GlobalActivity extends AppCompatActivity {
-    private static final String TAG = "CORONA MAIN ACTIVITY";
+public class GlobalFragment extends Fragment {
+    public static final String TAG = "GLOBAL FRAGMENT";
     CoronaModel result;
 
     private TextView cases, todayCases;
@@ -42,12 +49,10 @@ public class GlobalActivity extends AppCompatActivity {
     private PieChart pieChart;
     private int active_case;
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_global, container, false);
+        initView(view);
         fetchData();
 //        setDateTextView();
         setupPieChart();
@@ -57,20 +62,22 @@ public class GlobalActivity extends AppCompatActivity {
         country.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GlobalActivity.this, CountryActivity.class);
-                startActivity(intent);
+//                Fragment fragment = new CountryFragment();
+//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.setCustomAnimations(
+//                        R.anim.slide_in_right,
+//                        R.anim.slide_out_left,
+//                        R.anim.slide_in_left,
+//                        R.anim.slide_out_right
+//                );
+////                fragmentTransaction.add(R.id.framelayout, fragment).addToBackStack(null).commit();
+//                fragmentTransaction.replace(R.id.framelayout, fragment).commit();
+                MyApplication.addToBackStack(R.id.navigation_country);
+                Navigation.findNavController(view).navigate(R.id.navigation_country);
             }
         });
-
-//        imageMap.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
-
+        return view;
     }
 
     private static String withLargeIntegers(double value) {
@@ -207,17 +214,25 @@ public class GlobalActivity extends AppCompatActivity {
 
     }
 
-    private void initView() {
-        cases = findViewById(R.id.cases);
-        todayCases = findViewById(R.id.casesToday);
-        active = findViewById(R.id.active);
-        todayActive = findViewById(R.id.active_new);
-        recovered = findViewById(R.id.recovered);
-        todayRecovered = findViewById(R.id.recoveredToday);
-        deaths = findViewById(R.id.deaths);
-        todayDeaths = findViewById(R.id.deathsToday);
-        country = findViewById(R.id.country_card);
-        pieChart = findViewById(R.id.piechart);
+    private void initView(View view) {
+        cases = view.findViewById(R.id.cases);
+        todayCases = view.findViewById(R.id.casesToday);
+        active = view.findViewById(R.id.active);
+        todayActive = view.findViewById(R.id.active_new);
+        recovered = view.findViewById(R.id.recovered);
+        todayRecovered = view.findViewById(R.id.recoveredToday);
+        deaths = view.findViewById(R.id.deaths);
+        todayDeaths = view.findViewById(R.id.deathsToday);
+        country = view.findViewById(R.id.country_card);
+        pieChart = view.findViewById(R.id.piechart);
+    }
+
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d("Tag", "Fragment Global.onDestroyView() has been called.");
     }
 
 }

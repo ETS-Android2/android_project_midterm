@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_dashboard">
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="vn.edu.usth.coronatracker.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_global"
+            app:destination="@id/navigation_global"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_global"
+        android:name="vn.edu.usth.coronatracker.GlobalFragment"
+        android:label="Global"
+        tools:layout="@layout/fragment_global">
+        <action
+            android:id="@+id/action_country"
+            app:destination="@id/navigation_country"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_country"
+        android:name="vn.edu.usth.coronatracker.CountryFragment"
+        android:label="Country"
+        tools:layout="@layout/fragment_country">
+
+        <action
+            android:id="@+id/action_countryDetail"
+            app:destination="@id/navigation_country_detail"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_country_detail"
+        android:name="vn.edu.usth.coronatracker.CountryDetailFragment"
+        android:label="Country"
+        tools:layout="@layout/fragment_country_detail">
+        <argument
+            android:name="countryArg"
+            app:argType="vn.edu.usth.coronatracker.model.CountryModel" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_news"
+        android:name="vn.edu.usth.coronatracker.NewsFragment"
+        android:label="News"
+        tools:layout="@layout/fragment_news" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_info"
+        android:name="vn.edu.usth.coronatracker.InfoFragment"
+        android:label="Info"
+        tools:layout="@layout/fragment_info" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="vn.edu.usth.coronatracker.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" >
+    </fragment>
+
+
+</navigation>

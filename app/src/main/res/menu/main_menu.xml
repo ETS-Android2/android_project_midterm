@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/sortCases"
+        android:title="sort by cases"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/sortDeaths"
+        android:title="sort by deaths"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/sortAlphabet"
+        android:title="sort by alphabet"
+        app:showAsAction="never"/>
+</menu>

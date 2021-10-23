@@ -1,7 +1,8 @@
 package vn.edu.usth.coronatracker.adapter;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -20,7 +26,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import vn.edu.usth.coronatracker.CountryDetailActivity;
+import vn.edu.usth.coronatracker.CountryDetailFragment;
+import vn.edu.usth.coronatracker.CountryFragment;
+import vn.edu.usth.coronatracker.CountryFragmentDirections;
+import vn.edu.usth.coronatracker.GlobalFragment;
+import vn.edu.usth.coronatracker.MainActivity;
+import vn.edu.usth.coronatracker.MyApplication;
 import vn.edu.usth.coronatracker.R;
 import vn.edu.usth.coronatracker.model.CountryModel;
 
@@ -41,11 +52,11 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     @Override
     public CountryAdapter.CountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View studentView = inflater.inflate(R.layout.country_item, parent, false);
-        return new CountryViewHolder(studentView);
+        View countryView = inflater.inflate(R.layout.country_item, parent, false);
+        return new CountryViewHolder(countryView);
     }
 
-    public static String withLargeIntegers(double value) {
+    private static String withLargeIntegers(double value) {
         DecimalFormat df = new DecimalFormat("###,###,###");
         return df.format(value);
     }
@@ -62,10 +73,25 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, CountryDetailActivity.class);
-                intent.putExtra("countryDetail", country);
-                mContext.startActivity(intent);
+            public void onClick(View view) {
+//                Intent intent = new Intent(mContext, CountryDetailActivity.class);
+//                intent.putExtra("countryDetail", country);
+//                mContext.startActivity(intent);
+//                Bundle bundle=new Bundle();
+//                bundle.putSerializable("countryDetail", country);
+//                Fragment fragment = new CountryDetailFragment();
+//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.setCustomAnimations(
+//                        R.anim.slide_in_right,
+//                        R.anim.slide_out_left,
+//                        R.anim.slide_in_left,
+//                        R.anim.slide_out_right
+//                );
+//                fragmentTransaction.replace(R.id.framelayout, fragment).addToBackStack(null).commit();
+                MyApplication.addToBackStack(R.id.navigation_country_detail);
+                CountryFragmentDirections.ActionCountryDetail action=CountryFragmentDirections.actionCountryDetail(country);
+                Navigation.findNavController(view).navigate(action);
             }
         });
     }

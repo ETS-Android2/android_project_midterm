@@ -1,22 +1,25 @@
 package vn.edu.usth.coronatracker;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -54,8 +57,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CountryDetailActivity extends AppCompatActivity {
-    private static final String TAG = "CORONA DETAIL ACTIVITY";
+public class CountryDetailFragment extends Fragment {
+    public static final String TAG = "COUNTRY DETAIL FRAGMENT";
     private CountryModel resultCountry;
 
     private TextView cases, todayCases;
@@ -74,19 +77,23 @@ public class CountryDetailActivity extends AppCompatActivity {
 
     private int active_case;
 
-    @SuppressLint("SetTextI18n")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_country_detail);
-        initView();
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_country_detail, container, false);
+        initView(view);
         setupPieChart();
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            resultCountry = (CountryModel) getIntent().getSerializableExtra("countryDetail");
+//        Bundle extras = getArguments();
+//        if (extras != null) {
+//            resultCountry = (CountryModel) extras.getSerializable("countryDetail");
+//            Log.i(TAG, resultCountry.toString());
+//        } else {
+//            Log.i(TAG, "Error somewhere");
+//        }
+
+        if(getArguments()!=null){
+            CountryDetailFragmentArgs args=CountryDetailFragmentArgs.fromBundle(getArguments());
+            resultCountry=args.getCountryArg();
             Log.i(TAG, resultCountry.toString());
-        } else {
-            Log.i(TAG, "Error somewhere");
         }
 
 
@@ -106,6 +113,7 @@ public class CountryDetailActivity extends AppCompatActivity {
         }
         loadPieChartData(resultCountry);
         fetchData(resultCountry);
+        return view;
     }
 
     public static String withLargeIntegers(double value) {
@@ -113,19 +121,19 @@ public class CountryDetailActivity extends AppCompatActivity {
         return df.format(value);
     }
 
-    private void initView() {
-        cases = findViewById(R.id.cases);
-        todayCases = findViewById(R.id.casesToday);
-        active = findViewById(R.id.active);
-        recovered = findViewById(R.id.recovered);
-        todayRecovered = findViewById(R.id.recoveredToday);
-        deaths = findViewById(R.id.deaths);
-        todayDeaths = findViewById(R.id.deathsToday);
-        todayActive = findViewById(R.id.active_new);
-        country = findViewById(R.id.country_card);
-        countryName = findViewById(R.id.country_name);
-        pieChart = findViewById(R.id.piechart);
-        lineChart = findViewById(R.id.line_chart);
+    private void initView(View view) {
+        cases = view.findViewById(R.id.cases);
+        todayCases = view.findViewById(R.id.casesToday);
+        active = view.findViewById(R.id.active);
+        recovered = view.findViewById(R.id.recovered);
+        todayRecovered = view.findViewById(R.id.recoveredToday);
+        deaths = view.findViewById(R.id.deaths);
+        todayDeaths = view.findViewById(R.id.deathsToday);
+        todayActive = view.findViewById(R.id.active_new);
+        country = view.findViewById(R.id.country_card);
+        countryName = view.findViewById(R.id.country_name);
+        pieChart = view.findViewById(R.id.piechart);
+        lineChart = view.findViewById(R.id.line_chart);
     }
 
     private void setupPieChart() {
@@ -204,7 +212,7 @@ public class CountryDetailActivity extends AppCompatActivity {
     }
 
     private void fetchData(CountryModel country) {
-        RequestQueue queue = Volley.newRequestQueue(CountryDetailActivity.this);
+        RequestQueue queue = Volley.newRequestQueue(getContext());
         String country_name = country.getCountry();
         HashMap<String, Object> map = new HashMap<String, Object>();
         String url = String.format("https://disease.sh/v3/covid-19/vaccine/coverage/countries/%s", country_name);
@@ -247,7 +255,6 @@ public class CountryDetailActivity extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(CountryDetailActivity.this, "Fail to get data..", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -312,7 +319,7 @@ public class CountryDetailActivity extends AppCompatActivity {
 //        lineChart.setHorizontalScrollBarEnabled(false);
 //        lineChart.setVerticalScrollBarEnabled(false);
 
-        MyMarkerView mv = new MyMarkerView(this, R.layout.marker_content);
+        MyMarkerView mv = new MyMarkerView(getContext(), R.layout.marker_content);
         lineChart.setMarker(mv); // For bounds control
         lineChart.setDrawMarkers(true);
 
