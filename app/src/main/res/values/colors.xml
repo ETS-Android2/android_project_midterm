@@ -61,7 +61,7 @@
     <color name="recovered">#66BB6A</color>
     <color name="deaths">#EF5350</color>
     <color name="active">#29B6F6</color>
-    <color name="apptheme">#51B368</color>
+    <color name="apptheme">#40BFFF</color>
     <color name="grey">#E5E5E5</color>
     <color name="defaultTextColor">#000000</color>
     <color name="primaryAccent">#039BE5</color>
@@ -73,4 +73,7 @@
     <color name="deep_orange_700">#E64A19</color>
     <color name="blue_black_darker">#283747</color>
     <color name="orange_700">#F57C00</color>
+    <color name="press_color">#EBF0FF</color>
+    <color name="focus_color">#81A0FF</color>
+    <color name="prim_dark">#223263</color>
 </resources>

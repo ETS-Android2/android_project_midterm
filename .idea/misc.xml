@@ -3,25 +3,60 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable-anydpi/ic_back.xml" value="0.15416666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/bar_bg.xml" value="0.18385416666666668" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/bar_shadow.xml" value="0.15416666666666667" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/bg_rounded.xml" value="0.13697916666666668" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/black_rounded_button.xml" value="0.18385416666666668" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/button_bg.xml" value="0.13697916666666668" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/button_prim.xml" value="0.15416666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/button_sec.xml" value="0.15416666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/button_style_primary.xml" value="0.15416666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/edit_text_background.xml" value="0.15416666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/gradient.xml" value="0.18385416666666668" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/header_bg.xml" value="0.13697916666666668" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/ic_arrow.xml" value="0.15416666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18385416666666668" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/ic_location_pin.xml" value="0.18385416666666668" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/ic_map.xml" value="0.18385416666666668" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/icon_bg.xml" value="0.18385416666666668" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/input_text.xml" value="0.15416666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/log_out.xml" value="0.15416666666666667" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/shapebgsearch.xml" value="0.13697916666666668" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/virus_outline.xml" value="0.15416666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/drawable/white_rounded_button.xml" value="0.18385416666666668" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/font/lora.xml" value="0.17239583333333333" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/font/poppins.xml" value="0.4466666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_corona_info.xml" value="0.22" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_country.xml" value="0.3190789473684211" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_country_detail.xml" value="0.22" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_dashboard.xml" value="0.18018018018018017" />
-        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_main.xml" value="0.20041322314049587" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_edit_profile.xml" value="0.3333333333333333" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_maps.xml" value="0.11666666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_report.xml" value="0.3329886246122027" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/activity_verify_code.xml" value="0.3333333333333333" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/country_item.xml" value="0.3333333333333333" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/dash_board.xml" value="0.11666666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/fragment_country.xml" value="0.22" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/fragment_country_detail.xml" value="0.22" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/fragment_dashboard.xml" value="0.3333333333333333" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/fragment_global.xml" value="0.22" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/fragment_info.xml" value="0.22" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/fragment_news.xml" value="0.16770833333333332" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/marker_content.xml" value="0.3333333333333333" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/news_item.xml" value="0.16666666666666666" />
         <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/layout/slider_item.xml" value="0.11666666666666667" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/menu/bottom_navigation.xml" value="0.13385416666666666" />
+        <entry key="..\:/projects/Android/android_project_midterm1/app/src/main/res/menu/main_menu.xml" value="0.13385416666666666" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

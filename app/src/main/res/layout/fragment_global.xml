@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFEFEF"
+    android:background="@color/white"
     tools:context=".GlobalFragment" >
 
     <LinearLayout
@@ -14,22 +14,22 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#51B368">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/covid_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins"
+                android:letterSpacing="0.01"
                 android:paddingLeft="10dp"
-                android:text="@string/covid_19_in_the_world"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:fontFamily="@font/lora" />
+                android:text="Global"
+                android:textColor="@color/prim_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
 <!--            <TextView-->
 <!--                android:id="@+id/date"-->
@@ -47,18 +47,16 @@
             android:id="@+id/cardViewGraph"
             android:layout_width="match_parent"
             android:layout_height="350dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp"
-            app:cardCornerRadius="5dp"
+            android:layout_margin="17dp"
+            app:cardCornerRadius="10dp"
             app:cardElevation="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="2"
+                android:background="#F5F8FF">
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/piechart"
@@ -71,9 +69,7 @@
                     android:layout_weight="2"
                     android:padding="6dp" />
 
-
             </LinearLayout>
-
 
         </androidx.cardview.widget.CardView>
 
@@ -81,6 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alignmentMode="alignMargins"
+            android:layout_margin="7dp"
             android:columnCount="2"
             android:rowCount="2">
 
@@ -90,28 +87,28 @@
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="8dp"
-                app:cardCornerRadius="8dp"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:background="#F5F8FF"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/cases_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:text="@string/cases"
-                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textColor="@color/prim_dark"
                         android:textSize="16sp"
-                        android:fontFamily="@font/lora" />
+                        android:fontFamily="@font/poppins" />
 
                     <TextView
                         android:id="@+id/cases"
@@ -120,21 +117,22 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text=""
-                        android:textStyle="bold"
                         android:background="@drawable/bg_rounded"
                         android:backgroundTint="#FFE18A"
                         android:textColor="#FFFFFF"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins" />
 
                     <TextView
                         android:id="@+id/casesToday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="25dp"
+                        android:layout_marginBottom="20dp"
                         android:gravity="center"
                         android:text=""
                         android:textColor="#A6762E"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins" />
 
                 </LinearLayout>
 
@@ -146,27 +144,30 @@
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="8dp"
-                app:cardCornerRadius="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:background="#F5F8FF"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/active_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:text="@string/active"
-                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textColor="@color/prim_dark"
                         android:textSize="16sp"
-                        android:fontFamily="@font/lora" />
+                        android:fontFamily="@font/poppins" />
 
                     <TextView
                         android:id="@+id/active"
@@ -175,21 +176,22 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text=""
-                        android:textStyle="bold"
                         android:background="@drawable/bg_rounded"
                         android:backgroundTint="#82C8FF"
                         android:textColor="#FFFFFF"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins" />
 
                     <TextView
                         android:id="@+id/active_new"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="25dp"
+                        android:layout_marginBottom="20dp"
                         android:gravity="center"
                         android:text=""
                         android:textColor="#272D73"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins" />
 
                 </LinearLayout>
 
@@ -201,29 +203,30 @@
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:background="#F5F8FF"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/recovered_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:text="@string/recovered"
-                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textColor="@color/prim_dark"
                         android:textSize="16sp"
-                        android:fontFamily="@font/lora" />
+                        android:fontFamily="@font/poppins" />
 
                     <TextView
                         android:id="@+id/recovered"
@@ -232,21 +235,22 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text=""
-                        android:textStyle="bold"
                         android:background="@drawable/bg_rounded"
                         android:backgroundTint="#9AFF9E"
                         android:textColor="#418C44"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins" />
 
                     <TextView
                         android:id="@+id/recoveredToday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="25dp"
+                        android:layout_marginBottom="20dp"
                         android:gravity="center"
                         android:text=""
                         android:textColor="#245C31"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins" />
 
                 </LinearLayout>
 
@@ -258,28 +262,29 @@
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="8dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="10dp"
                 app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:background="#F5F8FF"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/deaths_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="20dp"
                         android:gravity="center"
                         android:text="@string/deaths"
-                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textColor="@color/prim_dark"
                         android:textSize="16sp"
-                        android:fontFamily="@font/lora" />
+                        android:fontFamily="@font/poppins" />
 
                     <TextView
                         android:id="@+id/deaths"
@@ -288,21 +293,22 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text=""
-                        android:textStyle="bold"
                         android:background="@drawable/bg_rounded"
                         android:backgroundTint="#FF877E"
                         android:textColor="#FFFFFF"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins" />
 
                     <TextView
                         android:id="@+id/deathsToday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="25dp"
+                        android:layout_marginBottom="20dp"
                         android:gravity="center"
                         android:text=""
                         android:textColor="#7D1C2D"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins" />
 
                 </LinearLayout>
 
@@ -319,21 +325,20 @@
             <RelativeLayout
                 android:id="@+id/country_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:padding="10dp"
+                android:layout_height="50dp"
+                android:layout_margin="17dp"
                 android:elevation="4dp"
-                android:background="@drawable/button_bg">
+                style="@style/button_style">
 
                 <TextView
                     android:id="@+id/country"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/poppins"
                     android:text="View Country"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/lora" />
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 

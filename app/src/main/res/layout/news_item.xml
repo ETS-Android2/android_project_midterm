@@ -3,28 +3,27 @@
     android:id="@+id/card_news"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:layout_marginBottom="2dp"
     android:elevation="2dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/tvTitleNews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/lora"
-            android:paddingLeft="6dp"
-            android:paddingRight="6dp"
+            android:fontFamily="@font/poppins"
             android:text=""
-            android:textSize="20sp" />
+            android:textColor="@color/prim_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
         <ImageView
@@ -37,29 +36,24 @@
             android:id="@+id/tvDateNews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="2dp"
-            android:fontFamily="@font/lora"
-            android:paddingLeft="6dp"
-            android:paddingRight="6dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins"
             android:text=""
+            android:textColor="@color/apptheme"
             android:textSize="12sp" />
-
 
         <TextView
             android:id="@+id/tvDescNews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="10dp"
             android:fontFamily="@font/lora"
-            android:paddingLeft="6dp"
-            android:paddingRight="6dp"
             android:text=""
-            android:textSize="14sp" />
-
-
-
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/grey" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

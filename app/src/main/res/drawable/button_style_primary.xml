@@ -15,7 +15,7 @@
     <item >
         <shape android:shape="rectangle"  >
             <corners android:radius="6dp" />
-            <solid android:color="@color/primaryAccent"/>
+            <solid android:color="@color/apptheme"/>
         </shape>
     </item>
 </ripple>

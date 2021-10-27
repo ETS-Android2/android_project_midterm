@@ -26,7 +26,8 @@
         android:text="Enter OTP"
         android:textColor="@color/colorAccent"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins" />
 
 
     <TextView
@@ -40,7 +41,8 @@
         android:text="We have sent you an OTP for \n verification phone number"
         android:textColor="@color/colorAccent"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins" />
 
     <com.chaos.view.PinView
         android:id="@+id/otp_text_view"
@@ -59,6 +61,7 @@
         android:textColorHint="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:fontFamily="@font/poppins"
         app:cursorColor="@color/colorPrimary"
         app:cursorWidth="2dp"
         app:hideLineWhenFilled="false"
@@ -82,7 +85,8 @@
         android:text="Verify OTP"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins"/>
 
     <ProgressBar
         android:id="@+id/progressBar"

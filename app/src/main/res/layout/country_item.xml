@@ -30,7 +30,7 @@
                 android:text="@string/united_states"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@color/black"
-                android:fontFamily="@font/lora" />
+                android:fontFamily="@font/poppins" />
 
             <TextView
                 android:id="@+id/cases"
@@ -41,7 +41,8 @@
                 android:textSize="13sp"
                 android:gravity="center"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#1B6AED" />
+                android:textColor="#1B6AED"
+                android:fontFamily="@font/poppins"/>
 
             <TextView
                 android:id="@+id/recovered"
@@ -52,7 +53,8 @@
                 android:textSize="13sp"
                 android:gravity="center"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#0DDF79" />
+                android:textColor="#0DDF79"
+                android:fontFamily="@font/poppins"/>
 
             <TextView
                 android:id="@+id/deaths"
@@ -63,7 +65,8 @@
                 android:textSize="13sp"
                 android:gravity="center"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#F4805B" />
+                android:textColor="#F4805B"
+                android:fontFamily="@font/poppins"/>
         </TableRow>
     </TableLayout>
 

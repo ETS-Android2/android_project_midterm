@@ -4,71 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="ProfileFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/image_profile"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/default_image_icon_xhdpi" />
-
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/image_profile"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/full_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/image_profile"
-                        android:maxLines="1"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/phone_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:maxLines="1"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
+                    android:fontFamily="@font/poppins"
+                    android:maxLines="1"
+                    android:text="Profile"
+                    android:textColor="@color/prim_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
-
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bar"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_profile"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/default_image_icon_xhdpi" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/image_profile"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/image_profile"
+                android:fontFamily="@font/poppins"
+                android:maxLines="1"
+                android:textColor="@color/prim_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins"
+                android:maxLines="1"
+                android:textColor="@color/apptheme"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/bar">
+        android:layout_below="@id/profile">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,21 +99,25 @@
                 android:id="@+id/relInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/edit_text_background"
+                android:padding="10dp">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/default_image_icon_xhdpi" />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/user" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center"
-                    android:text="Individual Infomation"
-                    android:textSize="16dp" />
+                    android:text="Personal Infomation"
+                    android:textColor="@color/prim_dark"
+                    android:textSize="14sp" />
 
 
             </LinearLayout>
@@ -102,21 +126,25 @@
                 android:id="@+id/relReport"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/edit_text_background"
+                android:padding="10dp">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_location_pin" />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/report" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center"
                     android:text="Report cases"
-                    android:textSize="16dp" />
+                    android:textColor="@color/prim_dark"
+                    android:textSize="14dp" />
 
 
             </LinearLayout>
@@ -125,21 +153,25 @@
                 android:id="@+id/relLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:padding="10dp"
+                android:background="@drawable/edit_text_background"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/log_out" />
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/logout" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center"
                     android:text="Logout"
-                    android:textSize="16dp" />
+                    android:textColor="@color/prim_dark"
+                    android:textSize="14dp" />
 
 
             </LinearLayout>
@@ -147,6 +179,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </RelativeLayout>
 
 </RelativeLayout>

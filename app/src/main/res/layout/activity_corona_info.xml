@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,6 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -28,7 +30,8 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:text="Corona Information"
-                    android:textColor="@color/white"
+                    android:textColor="@color/prim_dark"
+                    android:fontFamily="@font/poppins"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -70,12 +73,17 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/text_large_padding"
                     android:paddingBottom="@dimen/text_large_padding"
+                    android:fontFamily="@font/poppins"
+                    android:textStyle="bold"
+                    android:textColor="@color/prim_dark"
                     android:text="@string/corona_info_title" />
 
                 <TextView
                     style="@style/body_text_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins"
                     android:paddingBottom="@dimen/text_large_padding"
                     android:text="@string/corona_info_one" />
 
@@ -99,6 +107,8 @@
                     style="@style/body_text_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins"
                     android:paddingBottom="@dimen/text_large_padding"
                     android:text="@string/corona_info_three" />
 
@@ -107,6 +117,9 @@
                     style="@style/heading_textLarge_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/prim_dark"
+                    android:textStyle="bold"
                     android:paddingBottom="@dimen/text_large_padding"
                     android:text="@string/corona_symptoms_title" />
 
@@ -114,6 +127,8 @@
                     style="@style/body_text_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins"
                     android:paddingBottom="@dimen/text_large_padding"
                     android:text="@string/corona_symptoms_info" />
 
@@ -122,6 +137,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:alpha="0.5"
+                    android:textSize="12sp"
                     android:paddingBottom="@dimen/text_large_padding"
                     android:text="@string/corona_info_credit"
                     android:textStyle="italic" />
@@ -131,6 +147,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="web"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins"
                     android:paddingBottom="@dimen/text_large_padding"
                     android:text="@string/corona_more_info" />
 

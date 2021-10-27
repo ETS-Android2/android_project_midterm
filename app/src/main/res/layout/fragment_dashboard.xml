@@ -4,57 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardActivity">
+    android:background="@color/white"
+    tools:context=".DashboardFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/header_bg"
-        android:padding="10dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
+            android:letterSpacing="0.01"
             android:text="@string/welcome"
-            android:textColor="@color/white"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/lora"
-            android:layout_marginLeft="15dp" />
+            android:textColor="@color/prim_dark"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/coronavirus" />
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:src="@drawable/coronavirus" />-->
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layoutHeader"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
         <TableRow
             android:id="@+id/covidTracker"
-            android:layout_margin="10dp"
-            android:background="@drawable/bar_bg"
+            android:background="@drawable/edit_text_background"
+            android:padding="8dp"
             android:elevation="4dp">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/tracker"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/research"
                 tools:layout_editor_absoluteX="33dp"
                 tools:layout_editor_absoluteY="248dp" />
 
@@ -62,35 +60,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
                 android:text="@string/corona_tracker"
+                android:textColor="#223263"
                 android:textSize="20sp"
-                android:fontFamily="@font/lora" />
+                android:fontFamily="@font/poppins"/>
 
         </TableRow>
 
         <TableRow
             android:id="@+id/covidMap"
-            android:layout_margin="10dp"
-            android:background="@drawable/bar_bg"
+            android:background="@drawable/edit_text_background"
+            android:padding="8dp"
             android:elevation="4dp">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/map"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/placeholder"
                 tools:layout_editor_absoluteX="33dp"
                 tools:layout_editor_absoluteY="248dp" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
                 android:text="@string/corona_map"
                 android:textSize="20sp"
-                android:fontFamily="@font/lora" />
+                android:textColor="#223263"
+                android:fontFamily="@font/poppins"/>
 
         </TableRow>
 
