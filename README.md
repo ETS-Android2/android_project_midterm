@@ -33,7 +33,7 @@ This project is a Covid-19 tracker app made in Java. The main function is to kee
 * [Android Navigation Component](https://github.com/android/architecture-components-samples/tree/master/NavigationBasicSample): For navigation between fragments
 * [Pin Code](https://github.com/ChaosLeung/PinView): To display 6 number code OTP
 * [Country Code Picker](https://github.com/hbb20/CountryCodePickerProject): Country code picker, default Vietnam +84
-* [Firebase and google services for map, OTP, captcha]
+* Firebase and google services for map, OTP, captcha
 
 ## UI
 ![DashBoard](https://github.com/ssjinkaido/android_project_midterm/blob/master/screenshots/DashBoard.PNG)
