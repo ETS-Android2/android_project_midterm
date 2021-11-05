@@ -67,13 +67,16 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/patientName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
+                    android:background="@drawable/input_text"
+                    android:paddingLeft="10dp"
                     android:hint="Patient Name (Optional) *"
                     android:textSize="16dp"/>
 
@@ -88,6 +91,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
+                    android:background="@drawable/input_text"
+                    android:paddingLeft="10dp"
                     android:hint="Patient Address *"
                     android:textSize="16dp"/>
 
@@ -150,13 +155,16 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/reportPersonName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
+                    android:background="@drawable/input_text"
+                    android:paddingLeft="10dp"
                     android:hint="Name *"
                     android:textSize="16dp"/>
 
@@ -171,6 +179,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
+                    android:background="@drawable/input_text"
+                    android:paddingLeft="10dp"
                     android:hint="Mobile number *"
                     android:textSize="16dp"/>
 

@@ -18,7 +18,7 @@
         android:layout_height="70dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:indeterminateTint="#08D571"
+        android:indeterminateTint="@color/active"
         android:id="@+id/progressBar"
         android:visibility="invisible"
         />
