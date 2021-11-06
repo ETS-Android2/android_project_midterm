@@ -82,6 +82,12 @@ public class NewsFragment extends Fragment {
                                 news.setDesc(newsObj.getString("description"));
                                 news.setImage(newsObj.getString("urlToImage"));
                                 news.setUrl(newsObj.getString("url"));
+                                String publishedAt = newsObj.getString("publishedAt");
+                                String date = publishedAt.substring(0, 10);
+                                String time = publishedAt.substring(11, publishedAt.length() - 1);
+                                String newsDate = date + " " + time;
+                                news.setDate(newsDate);
+                                Log.d(TAG, publishedAt);
                                 newsList.add(news);
                             }
 

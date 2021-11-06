@@ -12,8 +12,13 @@
         tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_global"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/navigation_global"
-            />
+             />
+
     </fragment>
 
     <fragment
@@ -23,7 +28,12 @@
         tools:layout="@layout/fragment_global">
         <action
             android:id="@+id/action_country"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:destination="@id/navigation_country"
+
             />
     </fragment>
 
@@ -35,8 +45,11 @@
 
         <action
             android:id="@+id/action_countryDetail"
-            app:destination="@id/navigation_country_detail"
-            />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/navigation_country_detail" />
 
     </fragment>
 
