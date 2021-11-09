@@ -16,7 +16,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -93,7 +94,7 @@
                     android:fontFamily="@font/poppins"
                     android:background="@drawable/input_text"
                     android:paddingLeft="10dp"
-                    android:hint="Patient Address *"
+                    android:hint="Patient Address (Optional)*"
                     android:textSize="16dp"/>
 
             </com.google.android.material.textfield.TextInputLayout>

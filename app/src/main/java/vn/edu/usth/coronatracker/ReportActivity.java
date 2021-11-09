@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,13 +17,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import vn.edu.usth.coronatracker.databinding.ActivityReportBinding;
-import vn.edu.usth.coronatracker.model.ReportModel;
 import vn.edu.usth.coronatracker.model.User;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -44,12 +44,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class ReportActivity extends AppCompatActivity implements OnMapReadyCallback {
+    private static final String TAG="Report Activity";
     private ActivityReportBinding activityReportBinding;
     private FusedLocationProviderClient mFusedLocationClient;
     private GoogleMap mMap;
@@ -59,12 +64,16 @@ public class ReportActivity extends AppCompatActivity implements OnMapReadyCallb
     int PERMISSION_ID = 44;
     private FirebaseUser fUser;
     private DatabaseReference mRef;
+    private List<Address>addresses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityReportBinding = ActivityReportBinding.inflate(getLayoutInflater());
         setContentView(activityReportBinding.getRoot());
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setSupportActionBar(activityReportBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -75,6 +84,7 @@ public class ReportActivity extends AppCompatActivity implements OnMapReadyCallb
         getLastLocation();
         initFirebase();
         loadInfo();
+
 
         activityReportBinding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
 
@@ -119,8 +129,6 @@ public class ReportActivity extends AppCompatActivity implements OnMapReadyCallb
                 double lat = mMap.getCameraPosition().target.latitude;
                 double lng = mMap.getCameraPosition().target.longitude;
                 coordinates = new LatLng(lat, lng);
-                Log.d("UPDATE_LOCATION", String.valueOf(coordinates.latitude));
-//                setEtAddress(coordinates);
             }
         });
         getLastLocation();
@@ -211,23 +219,41 @@ public class ReportActivity extends AppCompatActivity implements OnMapReadyCallb
         if (!checkInfo()) {
             return;
         }
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
         Map<String, Object> details = new HashMap<>();
+        Geocoder geocoder=new Geocoder(getApplicationContext(), Locale.getDefault());
+        try {
+            addresses=geocoder.getFromLocation(coordinates.latitude,coordinates.longitude, 1);
+            StringBuilder sb = new StringBuilder();
+            if (addresses.size() > 0) {
+                Address address = addresses.get(0);
+                for (int i = 0; i < address.getMaxAddressLineIndex(); i++){
+                    sb.append(address.getAddressLine(i)).append(", ");
+                    sb.append(address.getCountryName());
+                }
+
+
+            }
+            if(sb.toString().equals("")){
+                details.put("patient_address",activityReportBinding.patientAddress.toString());
+            }else{
+                details.put("patient_address",sb.toString());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         details.put("patient_name", activityReportBinding.patientName.getText().toString());
-        details.put("patient_address", activityReportBinding.patientAddress.getText().toString());
         details.put("person_name", activityReportBinding.reportPersonName.getText().toString());
         details.put("person_mobile", activityReportBinding.reportPersonMobile.getText().toString());
         details.put("patient_latitude", coordinates.latitude);
         details.put("patient_longitude", coordinates.longitude);
+        details.put("date", formatter.format(date));
         details.put("verified", false);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        ReportModel report = new ReportModel(activityReportBinding.patientName.getText().toString(),
-                activityReportBinding.patientAddress.getText().toString(),
-                activityReportBinding.reportPersonName.getText().toString(),
-                activityReportBinding.reportPersonMobile.getText().toString(),
-                coordinates.latitude, coordinates.longitude, formatter.format(date), false);
         String reportId = mRef.child("Reports").push().getKey();
-        mRef.child("Reports").child(reportId).child(fUser.getUid()).setValue(report).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mRef.child("Reports").child(reportId).child(fUser.getUid()).setValue(details).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -240,14 +266,6 @@ public class ReportActivity extends AppCompatActivity implements OnMapReadyCallb
     }
 
     private boolean checkInfo() {
-        if (activityReportBinding.patientName.getText().toString().isEmpty()) {
-            activityReportBinding.patientName.setError("Enter Patient Name");
-            return false;
-        }
-        if (activityReportBinding.patientAddress.getText().toString().isEmpty()) {
-            activityReportBinding.patientAddress.setError("Enter Patient Address");
-            return false;
-        }
         if (activityReportBinding.reportPersonName.getText().toString().isEmpty()) {
             activityReportBinding.reportPersonName.setError("Enter your Name");
             return false;
@@ -278,6 +296,12 @@ public class ReportActivity extends AppCompatActivity implements OnMapReadyCallb
     private void initFirebase() {
         fUser = FirebaseAuth.getInstance().getCurrentUser();
         mRef = FirebaseDatabase.getInstance().getReference();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
 }
